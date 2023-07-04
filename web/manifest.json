@@ -1,6 +1,6 @@
 {
-    "name": "library3",
-    "short_name": "library3",
+    "name": "llibrary",
+    "short_name": "llibrary",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

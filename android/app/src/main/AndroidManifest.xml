@@ -1,7 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.library3">
-   <application
-        android:label="library3"
+    package="com.example.llibrary">
+    <uses-feature android:name="android.hardware.nfc"/>
+    <uses-feature android:name="android.hardware.nfc.hce"/>
+    <uses-permission android:name="android.permission.NFC"/>
+
+    <application
+        android:label="UniTech"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
