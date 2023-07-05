@@ -77,7 +77,7 @@ class LibraryScanState extends State<LibraryScan> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Login Page'),),
+          title: Text('Student Scan'),),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

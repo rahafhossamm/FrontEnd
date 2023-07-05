@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
+import 'package:flutter_nfc_kit/flutter_nfc_kit.dart';
+import 'package:llibrary/LibraryScan.dart';
 
 class TakeAttendance extends StatefulWidget {
   const TakeAttendance({Key? key}) : super(key: key);
@@ -21,6 +23,7 @@ class _TakeAttendanceState extends State<TakeAttendance> {
   String? coursename;
   String? slot;
   String? day;
+  String uid = "";
   bool error = false;
   String msg = "Opps something wrong happened";
   Future<String?> acc() async {
@@ -55,9 +58,10 @@ class _TakeAttendanceState extends State<TakeAttendance> {
 
   String Classno = "";
   String Exists = "";
-  String serialno =
-      "11110000"; //TODO: To be replaced by your NFC Implementation
+  String serialno=""; //TODO: To be replaced by your NFC Implementation
   Future<void> useridusingserial() async {
+
+    serialno=uid;
     http.Response response = await GetUserID(serialno);
     print("Status Code  ${response.statusCode}");
 
@@ -103,7 +107,7 @@ class _TakeAttendanceState extends State<TakeAttendance> {
                     Icons.check,
                     color: Colors.green,
                   ),
-                  Text('  Attendance took'),
+                  Text('  Attendance took successfully'),
                 ],
               )),
             );
@@ -116,7 +120,7 @@ class _TakeAttendanceState extends State<TakeAttendance> {
                     Icons.close,
                     color: Colors.red,
                   ),
-                  Text('  Student does not attend this class'),
+                  Text('  Student is not registered in this class'),
                 ],
               )),
             );
@@ -211,7 +215,7 @@ class _TakeAttendanceState extends State<TakeAttendance> {
                                 ),
                               ),
                               const Text(
-                                "Hi, Rania Shahin",
+                                "Hello,",
                                 style: TextStyle(
                                   // color: Colors.black,
                                   fontSize: 25.0,
@@ -284,13 +288,29 @@ class _TakeAttendanceState extends State<TakeAttendance> {
                                   onTap: () {
                                     useridusingserial();
                                   },
-                                  child: Image.asset(
-                                    "assets/images/nfc.png",
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.7,
+                                  child: GestureDetector(
+                                    onTap: () async {
+                                      // Action to perform when the image is tapped
+                                      NFCTag? tag = await FlutterNfcKit.poll();
+                                      if (tag != null) {
+                                        uid = tag.id;
+                                        print(uid);
+                                      } else {
+                                        print("No Tag");
+                                      }
+                                      useridusingserial();
+                                      // You can perform any desired action here
+                                    },
+                                    child: Image.asset('assets/images/nfc.gif',
+                                      width:
+                                      MediaQuery.of(context).size.width * 0.7,), // Replace with your image path
+                                  ),
+
+                                  // Image.asset(
+                                  //   "assets/images/nfc.gif",
+
                                   ),
                                 ),
-                              ),
                               Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Divider(),

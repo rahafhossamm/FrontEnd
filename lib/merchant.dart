@@ -62,7 +62,7 @@ class merchantstate extends State<merchant> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Charge Wallet'),),
+        title: Text('POS'),),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

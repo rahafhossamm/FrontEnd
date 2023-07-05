@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'signinn.dart';
 import 'package:async/async.dart';
 
 
 // var studentID=23100236;
 
-
+SigninState ss = SigninState();
 
 
 class Gettransactions extends StatefulWidget
@@ -14,8 +15,10 @@ class Gettransactions extends StatefulWidget
   @override
   Gettransactionsstate createState() => Gettransactionsstate();
 }
+
+
 class Gettransactionsstate extends State<Gettransactions> {
-  var studentID=23100012; //to be changed from loginpage (rania)
+  var studentID= id;
   var length=0;
   List transactionlist=[];
   String stringresponse = '';
@@ -77,9 +80,12 @@ class Gettransactionsstate extends State<Gettransactions> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Wallet'),),
-      body: ListView.builder(
+        title: Text('Wallet'),
+      ),
+      body: Container(
+      child: ListView.separated(
         itemCount: length,
+        separatorBuilder: (BuildContext context, int index) => Divider(),
         itemBuilder: (context, index) {
           return Row(
             children: [
@@ -88,42 +94,44 @@ class Gettransactionsstate extends State<Gettransactions> {
                 child: Icon(
                   Icons.monetization_on,
                   size: 32,
-                  color: Colors.blue,
+                  color: Color(0xFF1f3164),
                 ),
               ),
               Expanded(
-                child: Container(
-                  color: Colors.grey[200],
-                  padding: EdgeInsets.all(16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Transaction ID: ${transactionlist[index][0]}',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          fontStyle: FontStyle.italic,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20.0),
+                  child: Container(
+                    color: Colors.grey[200],
+                    padding: EdgeInsets.all(16),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Transaction ID: ${transactionlist[index][0]}',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            fontStyle: FontStyle.italic,
+                          ),
                         ),
-                      ),
-                      Text(
-                        'Student ID: ${transactionlist[index][1]}',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                      Text(
-                        'Merchant ID: ${transactionlist[index][2]}',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                      Text(
-                        'Transaction Date: ${transactionlist[index][3]}',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                      Text(
-                        'Transaction Amount: ${transactionlist[index][4]}',
-                        style: TextStyle(fontSize: 16),
-                      ),
-
-                    ],
+                        Text(
+                          'Student ID: ${transactionlist[index][1]}',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                        Text(
+                          'Merchant ID: ${transactionlist[index][2]}',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                        Text(
+                          'Transaction Date: ${transactionlist[index][3]}',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                        Text(
+                          'Transaction Amount: ${transactionlist[index][4]} EGP',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -131,8 +139,9 @@ class Gettransactionsstate extends State<Gettransactions> {
           );
         },
       ),
-
+      ),
     );
   }
+
 
 }

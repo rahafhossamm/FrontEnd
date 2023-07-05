@@ -72,7 +72,7 @@ class Paystate extends State<Pay> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dialogue Page'),
+        title: Text('POS'),
       ),
       body: AlertDialog(
         title: Text('Pay Amount'),

@@ -109,7 +109,7 @@ class _DoctorsCoursessState extends State<DoctorsCoursess> {
                             ),
                           ),
                           const Text(
-                            "Hi, Doctor",
+                            "Hello,",
                             style: TextStyle(
                               // color: Colors.black,
                               fontSize: 25.0,

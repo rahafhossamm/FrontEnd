@@ -1,26 +1,31 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:llibrary/LibraryScan.dart';
+import 'package:llibrary/WalletScan.dart';
+import 'package:llibrary/gettransactions.dart';
+import 'package:llibrary/merchant.dart';
 // import 'doc_courses.dart';
 import 'doctorcourses.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
+String id = "";
+
 class Signin extends StatefulWidget {
   const Signin({Key? key}) : super(key: key);
 
   @override
-  _SigninState createState() => _SigninState();
+  SigninState createState() => SigninState();
 }
 
-class _SigninState extends State<Signin> {
+class SigninState extends State<Signin> {
   @override
   final _storage = const FlutterSecureStorage();
   final _formKey = GlobalKey<FormState>();
   bool x = true;
   bool isLoading = false;
-  String id = "";
+
   String password = "";
   final snackBar = const SnackBar(
     content: Text('Invalid Username/Password'),
@@ -68,6 +73,7 @@ class _SigninState extends State<Signin> {
                             style: const TextStyle(
                               fontSize: 14,
                             ),
+                            keyboardType: TextInputType.number,
                             decoration: InputDecoration(
                               hintText: "Registration Number",
                               // labelText: label,
@@ -112,6 +118,7 @@ class _SigninState extends State<Signin> {
                               fontSize: 14,
                             ),
                             obscureText: x,
+                            keyboardType: TextInputType.number,
                             decoration: InputDecoration(
                               hintText: "Password",
 
@@ -204,6 +211,27 @@ class _SigninState extends State<Signin> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => LibraryScan(),
+                                ),
+                              );
+                            } else if (accountType == "cashier") {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => WalletScan(),
+                                ),
+                              );
+                            }else if (accountType == "merchant") {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => merchant(),
+                                ),
+                              );
+                            } else if (accountType == "student") {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Gettransactions(),
                                 ),
                               );
                             }

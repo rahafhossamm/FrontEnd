@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'LoginPage.dart';
+import 'LibraryScan.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
@@ -184,81 +184,7 @@ class secondpagestate extends State<secondpage>
       secondapicall(result);
     });
   }
-  /*@override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Borrowing Information'),
-      ),
-      body: Row(
-        children: [
-          Expanded(
-            child: Container(
-              padding: EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: 8),
-                  Text(a0.toString()),Text(a1.toString()),Text(a2.toString()),Text(a3.toString()),Text(a4.toString()),Text(a5.toString()),Text(a6.toString()),
-                ],
-              ),
-            ),
-          ),
-          IconButton(
-            onPressed: () {
-              // Handle remove action for Container 1
-            },
-            icon: Icon(Icons.remove, color: Colors.red),
-          ),
-          Expanded(
-            child: Container(
-              padding: EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: 8),
-                  Text(b0.toString()),
-                  Text(b1.toString()),
-                  Text(b2.toString()),
-                  Text(b3.toString()),
-                  Text(b4.toString()),
-                  Text(b5.toString()),
-                ],
-              ),
-            ),
-          ),
-          IconButton(
-            onPressed: () {
-              // Handle remove action for Container 2
-            },
-            icon: Icon(Icons.remove, color: Colors.red),
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Handle add action
-        },
-        child: Icon(Icons.add),
-        backgroundColor: Colors.green,
-      ),
-    );
-  }
-}*/
 
-  /*void returnBook(String book) {
-  // Perform logic to return the book here
-  // Remove the book from the borrowedBooks list
-  setState(() {
-  borrowedBooks.remove(book);
-  });
-  }
-
-  void borrowBook() {
-  // Perform logic to borrow a book here
-  // Show a dialog or navigate to a page to select a book to borrow
-  }
- */
   @override
   Widget build(BuildContext context) {
 
@@ -288,7 +214,7 @@ class secondpagestate extends State<secondpage>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Book ID: ${borrowedList[index][1]}',
+                        'Book Name: ${borrowedList[index][7]}',
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -298,8 +224,8 @@ class secondpagestate extends State<secondpage>
                       DropdownButton<String>(
                         value: borrowingID,
                         items: <String>[
-                          'Borrowing ID: ${borrowedList[index][0]}',
                           'Student ID: ${borrowedList[index][2]}',
+                          'Book ID: ${borrowedList[index][1]}',
                           'Borrowed Date: ${borrowedList[index][3]}',
                           'Due Date: ${borrowedList[index][4]}',
                           'Returned Date: ${borrowedList[index][5]}',
@@ -352,86 +278,6 @@ class secondpagestate extends State<secondpage>
     );
   }
 
-
-/*Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Borrowed Books'),
-      ),
-      body: Column(
-        children: [
-          Row(
-            children: [
-              Expanded(
-                child: Container(
-                  color: Colors.grey[200],
-                  padding: EdgeInsets.all(16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      //Text('', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                      SizedBox(height: 16),
-                      //Text('Borrowing ID: $borrowingID',style: TextStyle(fontSize:18,fontWeight:FontWeight.bold ,fontStyle: FontStyle.italic),),
-                      Text('Book ID:$bookID',style: TextStyle(fontSize:18,fontWeight:FontWeight.bold,fontStyle: FontStyle.italic )),
-                      Text('Student ID: $studentID',style: TextStyle(fontSize:18,fontWeight:FontWeight.bold,fontStyle: FontStyle.italic )),
-                      Text('Borrowed Date: $borroweddate',style: TextStyle(fontSize:18,fontWeight:FontWeight.bold,fontStyle: FontStyle.italic )),
-                      Text('Due Date: $duedate',style: TextStyle(fontSize:18,fontWeight:FontWeight.bold ,fontStyle: FontStyle.italic)),
-                      Text('Returned Date: $returneddate',style: TextStyle(fontSize:18,fontWeight:FontWeight.bold,fontStyle: FontStyle.italic )),
-                      Text('Penalty: $penalty',style: TextStyle(fontSize:18,fontWeight:FontWeight.bold,fontStyle: FontStyle.italic )),
-                    ],
-                  ),
-                ),
-              ),
-              IconButton(
-                onPressed: () {
-                  // Remove block 1 action
-                },
-                icon: Icon(Icons.remove_circle, color: Colors.red),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              Expanded(
-                child: Container(
-                    color: Colors.grey[200],
-                    padding: EdgeInsets.all(16),
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          //Text('BO', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-                          SizedBox(height: 16),
-                          Text('Borrowing ID: $borrowingID2',style: TextStyle(fontSize:18,fontWeight:FontWeight.bold,fontStyle: FontStyle.italic ),),
-                          Text('Book ID:$bookID2',style: TextStyle(fontSize:18,fontWeight:FontWeight.bold ,fontStyle: FontStyle.italic)),
-                          Text('Student ID: $studentID',style: TextStyle(fontSize:18,fontWeight:FontWeight.bold ,fontStyle: FontStyle.italic)),
-                          Text('Borrowed Date: $borroweddate2',style: TextStyle(fontSize:18,fontWeight:FontWeight.bold,fontStyle: FontStyle.italic )),
-                          Text('Due Date: $duedate2',style: TextStyle(fontSize:18,fontWeight:FontWeight.bold ,fontStyle: FontStyle.italic)),
-                          Text('Returned Date: $returneddate2',style: TextStyle(fontSize:18,fontWeight:FontWeight.bold ,fontStyle: FontStyle.italic)),
-                          Text('Penalty: $penalty2',style: TextStyle(fontSize:18,fontWeight:FontWeight.bold,fontStyle: FontStyle.italic )),
-                        ])),
-              ),
-              IconButton(
-                onPressed: () {
-                  // Remove block 2 action
-                },
-                icon: Icon(Icons.remove_circle, color: Colors.red),
-              ),
-            ],
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Add block action
-        },
-        child: Icon(Icons.add),
-        backgroundColor: Colors.green,
-      ),
-    );
-  }
-}
-
-*/
   Future<void> ReturningAPI(int BookId, int studentId) async {
     var apiUrl = 'http://smart-campus-env-1.eba-2gujdmuy.eu-west-3.elasticbeanstalk.com/api/ReturningAPI/';
     var headers = {'accept': '*/*', 'Content-Type': 'application/json'};

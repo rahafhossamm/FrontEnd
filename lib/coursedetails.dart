@@ -374,7 +374,7 @@ class _CourseDetailsState extends State<CourseDetails> {
                               ),
                             ),
                             const Text(
-                              "Hi, Rania Shahin",
+                              "Hello,",
                               style: TextStyle(
                                 // color: Colors.black,
                                 fontSize: 25.0,
