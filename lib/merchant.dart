@@ -68,9 +68,9 @@ class merchantstate extends State<merchant> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/images/AASTlogo.png', // Replace with your image path
-              width: 150,
-              height: 150,
+              'assets/images/nfc.gif', // Replace with your image path
+              width: 250,
+              height: 250,
             ),
             SizedBox(height: 16),
             Container(
@@ -80,6 +80,16 @@ class merchantstate extends State<merchant> {
                   children: [
                     SizedBox(width: 8),
                     ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor:
+                          const MaterialStatePropertyAll(Color(0xFF1f3164)),
+                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                          ),
+                          minimumSize: MaterialStateProperty.all<Size>(Size(200, 50))
+                      ),
                       onPressed: () async {
                         NFCTag? tag = await FlutterNfcKit.poll();
                         if (tag != null) {

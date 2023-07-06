@@ -96,11 +96,26 @@ class Walletscanstate extends State<WalletScan> {
                           print(uid);
 
                           await GetUserID(uid);
-
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(builder: (context) => WalletAdd()),);
-
+                          if(id != 0) {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => WalletAdd()),);
+                          }else{
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                    content: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.close,
+                                          color: Colors.red,
+                                        ),
+                                        Text('  Card not found'),
+                                      ],
+                                    ),
+                                )
+                            );
+                          }
 
                           //GetPointsAmount(id);
                         } else {

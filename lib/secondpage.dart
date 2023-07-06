@@ -268,6 +268,16 @@ class secondpagestate extends State<secondpage>
 
                 print(barcodeScanRes);
                 await GetTheBookID(barcodeScanRes);
+                ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Row(
+                        children: [
+
+                          Text(message),
+                        ],
+                      ),
+                    )
+                );
               },
 
 

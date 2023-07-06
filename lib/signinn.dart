@@ -64,7 +64,7 @@ class SigninState extends State<Signin> {
                           padding: const EdgeInsets.all(8.0),
                           child: TextFormField(
                             autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
+                            AutovalidateMode.onUserInteraction,
                             onChanged: (val) {
                               setState(() {
                                 id = val;
@@ -108,7 +108,7 @@ class SigninState extends State<Signin> {
                           padding: const EdgeInsets.all(8.0),
                           child: TextFormField(
                             autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
+                            AutovalidateMode.onUserInteraction,
                             onChanged: (val) {
                               setState(() {
                                 password = val;
@@ -169,7 +169,7 @@ class SigninState extends State<Signin> {
                   child: ElevatedButton(
                     style: ButtonStyle(
                       backgroundColor:
-                          const MaterialStatePropertyAll(Color(0xFF1f3164)),
+                      const MaterialStatePropertyAll(Color(0xFF1f3164)),
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18.0),
@@ -186,7 +186,7 @@ class SigninState extends State<Signin> {
                       });
                       if (_formKey.currentState!.validate()) {
                         http.Response response =
-                            await authentication(id, password);
+                        await authentication(id, password);
                         print("Status Code  " + response.statusCode.toString());
                         if (response.statusCode == 200) {
                           Map<String, dynamic> map = json.decode(response.body);
@@ -287,16 +287,16 @@ class SigninState extends State<Signin> {
                       child: Center(
                         child: isLoading
                             ? const CupertinoActivityIndicator(
-                                color: Colors.white,
-                              )
+                          color: Colors.white,
+                        )
                             : const Text(
-                                'Sign in',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
+                          'Sign in',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
                     ),
                   ),
