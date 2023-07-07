@@ -19,7 +19,7 @@ class Paystate extends State<Pay> {
   Map mapresponse2 = {};
   Map dataresponse = {};
   var points;
-  int merchantid=12024;
+  int merchantid=int.parse(id);
 
   Future<void> refreshWidget() async {
     await Paymentprocess(sid);
