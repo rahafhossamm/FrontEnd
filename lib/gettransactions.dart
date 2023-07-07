@@ -28,7 +28,6 @@ class Gettransactionsstate extends State<Gettransactions> {
 
   Future<void> Gettransactions(var studentId) async {
     var apiUrl = 'http://smart-campus-env-1.eba-2gujdmuy.eu-west-3.elasticbeanstalk.com/api/Gettransactions/';
-    // var headers = {'accept': '*/*', 'Content-Type': 'application/json'};
     var headers = {'accept': '*/*', 'Content-Type': 'application/json','Authorization': 'Bearer ${token}'};
     var body = jsonEncode({
       "transaction_id": 0,

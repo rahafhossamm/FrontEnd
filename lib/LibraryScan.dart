@@ -30,7 +30,6 @@ class LibraryScanState extends State<LibraryScan> {
   Future<void> apicall(String serialNumber) async {
     var apiUrl = 'http://smart-campus-env-1.eba-2gujdmuy.eu-west-3.elasticbeanstalk.com/api/GetUserID/';
     var headers = {'accept': '*/*', 'Content-Type': 'application/json','Authorization': 'Bearer ${token}'};
-    // var headers = {'accept': '*/*', 'Content-Type': 'application/json','Authorization': 'Bearer ${token}'};
     var body = jsonEncode({'serial_no': serialNumber});
     
     print('API URL: $apiUrl');
