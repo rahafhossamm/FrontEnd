@@ -417,7 +417,7 @@ Future<http.Response> GetScheduleID(
         "http://smart-campus-env-1.eba-2gujdmuy.eu-west-3.elasticbeanstalk.com/api/GetScheduleID/"),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
-      // 'Authorization': 'Bearer ${token}'
+       'Authorization': 'Bearer ${token}'
     },
     body: jsonEncode(<String, String>{
       "schedule_id": "0",
@@ -437,7 +437,7 @@ Future<http.Response> Checktakes(
         "http://smart-campus-env-1.eba-2gujdmuy.eu-west-3.elasticbeanstalk.com/CheckTakes/"),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
-      // 'Authorization': 'Bearer ${token}'
+       'Authorization': 'Bearer ${token}'
     },
     body: jsonEncode(<String, String>{
       "student_id": regno,
@@ -453,7 +453,7 @@ Future<http.Response> GetUserID(String serialno) {
         "http://smart-campus-env-1.eba-2gujdmuy.eu-west-3.elasticbeanstalk.com/api/GetUserID/"),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
-      // 'Authorization': 'Bearer ${token}'
+      'Authorization': 'Bearer ${token}'
     },
     body: jsonEncode(<String, String>{
       "serial_no": serialno,

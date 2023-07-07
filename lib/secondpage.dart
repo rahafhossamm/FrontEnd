@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'LibraryScan.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'signinn.dart';
 
 class secondpage extends StatefulWidget
 {
@@ -35,7 +36,7 @@ class secondpagestate extends State<secondpage>
 
   Future<void> secondapicall(dynamic studentID) async {
     var apiUrl = 'http://smart-campus-env-1.eba-2gujdmuy.eu-west-3.elasticbeanstalk.com/api/GetlistOfBooks/';
-    var headers = {'accept': '*/*', 'Content-Type': 'application/json'};
+    var headers = {'accept': '*/*', 'Content-Type': 'application/json','Authorization': 'Bearer ${token}'};
     var body = jsonEncode({
       "borrowing_id": 0,
       "book_id": 0,
@@ -88,7 +89,7 @@ class secondpagestate extends State<secondpage>
 
   Future<void> GetTheBookID(String isbn) async {
     var apiUrl = 'http://smart-campus-env-1.eba-2gujdmuy.eu-west-3.elasticbeanstalk.com/api/GetTheBookID/';
-    var headers = {'accept': '*/*', 'Content-Type': 'application/json'};
+    var headers = {'accept': '*/*', 'Content-Type': 'application/json','Authorization': 'Bearer ${token}'};
     var body = jsonEncode({
       "book_id": 0,
       "title": "string",
@@ -132,7 +133,7 @@ class secondpagestate extends State<secondpage>
 
   Future<void> BorrowAPI(int bookID) async {
     var apiUrl = 'http://smart-campus-env-1.eba-2gujdmuy.eu-west-3.elasticbeanstalk.com/api/BorrowingAPI/';
-    var headers = {'accept': '*/*', 'Content-Type': 'application/json'};
+    var headers = {'accept': '*/*', 'Content-Type': 'application/json','Authorization': 'Bearer ${token}'};
     var body = jsonEncode({
       "borrowing_id": 0,
       "book_id": bookID,
@@ -290,7 +291,7 @@ class secondpagestate extends State<secondpage>
 
   Future<void> ReturningAPI(int BookId, int studentId) async {
     var apiUrl = 'http://smart-campus-env-1.eba-2gujdmuy.eu-west-3.elasticbeanstalk.com/api/ReturningAPI/';
-    var headers = {'accept': '*/*', 'Content-Type': 'application/json'};
+    var headers = {'accept': '*/*', 'Content-Type': 'application/json','Authorization': 'Bearer ${token}'};
     var body = jsonEncode({
       "borrowing_id": 0,
       "book_id": BookId,

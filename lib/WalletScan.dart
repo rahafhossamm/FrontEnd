@@ -3,9 +3,10 @@ import 'package:http/http.dart' as http;
 import 'WalletAdd.dart';
 import 'LibraryScan.dart';
 import 'dart:convert';
+import 'signinn.dart';
 import 'package:flutter_nfc_kit/flutter_nfc_kit.dart';
 
-var id;
+var sid ; //changed from id 
 
 LibraryScanState libraryscanState = LibraryScanState();
 
@@ -25,7 +26,7 @@ class Walletscanstate extends State<WalletScan> {
 
   Future<void> GetUserID(String serialNumber) async {
     var apiUrl = 'http://smart-campus-env-1.eba-2gujdmuy.eu-west-3.elasticbeanstalk.com/api/GetUserID/';
-    var headers = {'accept': '*/*', 'Content-Type': 'application/json'};
+    var headers = {'accept': '*/*', 'Content-Type': 'application/json','Authorization': 'Bearer ${token}'};
     var body = jsonEncode({'serial_no': serialNumber});
 
     print('API URL: $apiUrl');
@@ -42,8 +43,8 @@ class Walletscanstate extends State<WalletScan> {
         var data = jsonDecode(response.body);
 
         mapresponse=json.decode(response.body);
-        id=mapresponse['studentID'];
-        print(id);
+        sid=mapresponse['studentID'];
+        print(sid);
 
 
       } else {
@@ -96,7 +97,7 @@ class Walletscanstate extends State<WalletScan> {
                           print(uid);
 
                           await GetUserID(uid);
-                          if(id != 0) {
+                          if(sid != 0) {
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(

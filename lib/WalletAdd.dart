@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
-import 'WalletScan.dart';
 import 'signinn.dart';
+import 'WalletScan.dart';
+//changed id imported from walletscan to sid
 
 Walletscanstate walletScan = Walletscanstate();
 
@@ -20,7 +20,7 @@ class WalletAddState extends State<WalletAdd> {
   Map mapresponse2 = {};
   Map dataresponse = {};
   var points;
-  int merchantid=12024;
+  int merchantid=12024; //to be changed 
 
   Future<void> getPointsAmount(int studentId) async {
     var apiUrl =
@@ -57,7 +57,7 @@ class WalletAddState extends State<WalletAdd> {
   }
 
   Future<void> refreshWidget() async {
-    await getPointsAmount(id);
+    await getPointsAmount(sid);
     setState(() {});
   }
 
@@ -143,8 +143,8 @@ class WalletAddState extends State<WalletAdd> {
 
   @override
   void initState() {
-    print(id);
-    getPointsAmount(id);
+    print(sid);
+    getPointsAmount(sid);
     super.initState();
   }
 
@@ -163,7 +163,7 @@ class WalletAddState extends State<WalletAdd> {
         ),
       ),
       body: FutureBuilder<void>(
-        future: getPointsAmount(id),
+        future: getPointsAmount(sid),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting ||
               points == null) {

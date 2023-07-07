@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
+import 'signinn.dart';
 import 'merchant.dart';
 
 // merchantstate merchant1 = merchantstate();
-
+//id changed to sid from merchant.dart
 class Pay extends StatefulWidget {
   @override
   Paystate createState() => Paystate();
@@ -22,7 +22,7 @@ class Paystate extends State<Pay> {
   int merchantid=12024;
 
   Future<void> refreshWidget() async {
-    await Paymentprocess(id);
+    await Paymentprocess(sid);
     setState(() {});
   }
 
@@ -31,10 +31,10 @@ class Paystate extends State<Pay> {
   Future<void> Paymentprocess(int amount) async {
     var apiUrl =
         'http://smart-campus-env-1.eba-2gujdmuy.eu-west-3.elasticbeanstalk.com/api/Paymentprocess/';
-    var headers = {'accept': '*/*', 'Content-Type': 'application/json'};
+    var headers = {'accept': '*/*', 'Content-Type': 'application/json','Authorization': 'Bearer ${token}'};
     var body = jsonEncode({
       "transaction_id": 0,
-      "student_id": id,
+      "student_id": sid,
       "merchant_id": merchantid,
       "transaction_date": "2023-06-28T05:44:50.771Z",
       "transaction_amount": amount
