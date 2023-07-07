@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'coursedetails.dart';
-
+import 'signinn.dart';
 class DoctorsCoursess extends StatefulWidget {
   DoctorsCoursess({Key? key}) : super(key: key);
 
@@ -862,6 +862,7 @@ Future<http.Response> GetCourses(String id) {
         "http://smart-campus-env-1.eba-2gujdmuy.eu-west-3.elasticbeanstalk.com/api/GetCourses/"),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
+      'Authorization': 'Bearer ${token}'
     },
     body: jsonEncode(<String, String>{
       "instructor_id": id,

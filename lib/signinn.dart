@@ -11,6 +11,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 String id = "";
+String token = "";
 
 class Signin extends StatefulWidget {
   const Signin({Key? key}) : super(key: key);
@@ -192,6 +193,8 @@ class SigninState extends State<Signin> {
                           Map<String, dynamic> map = json.decode(response.body);
                           var accountType = map['user_type'];
                           var id = map["user_id"];
+                          token = map["token"];
+                          print(token);
                           print("Recieved accountType  " + accountType);
                           print(json.decode(response.body));
                           if (accountType != "Not Authorized") {

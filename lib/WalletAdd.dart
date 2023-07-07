@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import 'WalletScan.dart';
+import 'signinn.dart';
 
 Walletscanstate walletScan = Walletscanstate();
 
@@ -24,7 +25,7 @@ class WalletAddState extends State<WalletAdd> {
   Future<void> getPointsAmount(int studentId) async {
     var apiUrl =
         'http://smart-campus-env-1.eba-2gujdmuy.eu-west-3.elasticbeanstalk.com/api/GetPointsAmount/';
-    var headers = {'accept': '*/*', 'Content-Type': 'application/json'};
+    var headers = {'accept': '*/*', 'Content-Type': 'application/json','Authorization': 'Bearer ${token}'};
     var body = jsonEncode({
       "student_id": studentId,
       "points_balance": 0,
@@ -65,7 +66,7 @@ class WalletAddState extends State<WalletAdd> {
   Future<void> ChargeProcess(int amount) async {
     var apiUrl =
         'http://smart-campus-env-1.eba-2gujdmuy.eu-west-3.elasticbeanstalk.com/api/Chargeprocess/';
-    var headers = {'accept': '*/*', 'Content-Type': 'application/json'};
+    var headers = {'accept': '*/*', 'Content-Type': 'application/json','Authorization': 'Bearer ${token}'};
     var body = jsonEncode({
       "transaction_id": 0,
       "student_id": id,

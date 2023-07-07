@@ -9,6 +9,7 @@ import 'package:http/http.dart' as http;
 // import 'package:grad_project/Students.dart';
 // import 'package:grad_project/attendance.dart';
 import 'package:intl/intl.dart';
+import 'signinn.dart';
 
 class CourseDetails extends StatefulWidget {
   const CourseDetails({Key? key}) : super(key: key);
@@ -880,6 +881,7 @@ Future<http.Response> GetSlots(String id, String coursecode) {
         "http://smart-campus-env-1.eba-2gujdmuy.eu-west-3.elasticbeanstalk.com/api/GetSlots/"),
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
+      'Authorization': 'Bearer ${token}'
     },
     body: jsonEncode(<String, String>{
       "schedule_id": "0",

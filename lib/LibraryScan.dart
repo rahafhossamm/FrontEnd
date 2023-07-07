@@ -4,7 +4,7 @@ import 'secondpage.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter_nfc_kit/flutter_nfc_kit.dart';
-
+import 'signinn.dart';
 
 
 var result;
@@ -30,8 +30,9 @@ class LibraryScanState extends State<LibraryScan> {
   Future<void> apicall(String serialNumber) async {
     var apiUrl = 'http://smart-campus-env-1.eba-2gujdmuy.eu-west-3.elasticbeanstalk.com/api/GetUserID/';
     var headers = {'accept': '*/*', 'Content-Type': 'application/json'};
+    // var headers = {'accept': '*/*', 'Content-Type': 'application/json','Authorization': 'Bearer ${token}'};
     var body = jsonEncode({'serial_no': serialNumber});
-    //'Authorization': 'Bearer $token'
+    
     print('API URL: $apiUrl');
     print('Headers: $headers');
     print('Request Body: $body');
