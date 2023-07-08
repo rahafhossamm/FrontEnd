@@ -32,290 +32,7 @@ class SigninState extends State<Signin> {
     content: Text('Invalid Username/Password'),
   );
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: SafeArea(
-//         child: Padding(
-//           padding: const EdgeInsets.all(20.0),
-//           child: SingleChildScrollView(
-//             child: Wrap(
-//               // crossAxisAlignment: CrossAxisAlignment.start,
-//               children: [
-//                 Center(
-//                   child: Image.asset('assets/images/AASTlogo.png'),
-//                 ),
-//                 const Padding(
-//                   padding: EdgeInsets.all(8.0),
-//                   child: Text(
-//                     "Sign In",
-//                     style: TextStyle(
-//                       fontSize: 35,
-//                       fontWeight: FontWeight.bold,
-//                     ),
-//                   ),
-//                 ),
-//                 Form(
-//                   key: _formKey,
-//                   child: SafeArea(
-//                     child: Column(
-//                       crossAxisAlignment: CrossAxisAlignment.start,
-//                       children: [
-//                         Padding(
-//                           padding: const EdgeInsets.all(8.0),
-//                           child: TextFormField(
-//                             autovalidateMode:
-//                             AutovalidateMode.onUserInteraction,
-//                             onChanged: (val) {
-//                               setState(() {
-//                                 id = val;
-//                               });
-//                             },
-//                             style: const TextStyle(
-//                               fontSize: 14,
-//                             ),
-//                             keyboardType: TextInputType.number,
-//                             decoration: InputDecoration(
-//                               hintText: "Registration Number",
-//                               // labelText: label,
-//                               contentPadding: const EdgeInsets.symmetric(
-//                                   vertical: 10.0, horizontal: 10.0),
-//                               icon: const Icon(
-//                                 Icons.numbers,
-//                                 color: Colors.grey,
-//                               ),
-//                               enabledBorder: OutlineInputBorder(
-//                                 borderRadius: BorderRadius.circular(8),
-//                                 borderSide: BorderSide(
-//                                   color: Colors.grey.withOpacity(0.5),
-//                                 ),
-//                               ),
-//                               focusedBorder: OutlineInputBorder(
-//                                 borderSide: const BorderSide(
-//                                   color: Colors.grey,
-//                                   // color: Colors.grey.withOpacity(0.5),
-//                                   width: 2,
-//                                 ),
-//                                 borderRadius: BorderRadius.circular(8),
-//                               ),
-//                               border: OutlineInputBorder(
-//                                 borderSide: const BorderSide(color: Colors.red),
-//                                 borderRadius: BorderRadius.circular(8),
-//                               ),
-//                             ),
-//                           ),
-//                         ),
-//                         Padding(
-//                           padding: const EdgeInsets.all(8.0),
-//                           child: TextFormField(
-//                             autovalidateMode:
-//                             AutovalidateMode.onUserInteraction,
-//                             onChanged: (val) {
-//                               setState(() {
-//                                 password = val;
-//                               });
-//                             },
-//                             style: const TextStyle(
-//                               fontSize: 14,
-//                             ),
-//                             obscureText: x,
-//                             keyboardType: TextInputType.number,
-//                             decoration: InputDecoration(
-//                               hintText: "Password",
-
-//                               suffixIcon: IconButton(
-//                                 onPressed: () {
-//                                   setState(() {
-//                                     x = !x;
-//                                   });
-//                                 },
-//                                 icon: Icon(
-//                                   (x) ? Icons.visibility_off : Icons.visibility,
-//                                 ),
-//                               ),
-//                               // labelText: label,
-//                               contentPadding: const EdgeInsets.symmetric(
-//                                   vertical: 10.0, horizontal: 10.0),
-//                               icon: const Icon(
-//                                 Icons.lock_outlined,
-//                                 color: Colors.grey,
-//                               ),
-//                               enabledBorder: OutlineInputBorder(
-//                                 borderRadius: BorderRadius.circular(8),
-//                                 borderSide: BorderSide(
-//                                   color: Colors.grey.withOpacity(0.5),
-//                                 ),
-//                               ),
-//                               focusedBorder: OutlineInputBorder(
-//                                 borderSide: const BorderSide(
-//                                   color: Colors.grey,
-//                                   // color: Colors.grey.withOpacity(0.5),
-//                                   width: 2,
-//                                 ),
-//                                 borderRadius: BorderRadius.circular(8),
-//                               ),
-//                               border: OutlineInputBorder(
-//                                 borderSide: const BorderSide(color: Colors.red),
-//                                 borderRadius: BorderRadius.circular(8),
-//                               ),
-//                             ),
-//                           ),
-//                         ),
-//                       ],
-//                     ),
-//                   ),
-//                 ),
-//                 Padding(
-//                   padding: const EdgeInsets.symmetric(vertical: 18.0),
-//                   child: ElevatedButton(
-//                     style: ButtonStyle(
-//                       backgroundColor:
-//                       const MaterialStatePropertyAll(Color(0xFF1f3164)),
-//                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-//                         RoundedRectangleBorder(
-//                           borderRadius: BorderRadius.circular(18.0),
-//                         ),
-//                       ),
-//                       // backgroundColor: (c.enabled)
-//                       //     ? const MaterialStatePropertyAll(Colors.blue)
-//                       //     : MaterialStatePropertyAll(Colors.blue.shade300),
-//                     ),
-//                     // onPressed: c.enabled ? c.signIn : null,
-//                     onPressed: () async {
-//                       setState(() {
-//                         isLoading = true;
-//                       });
-//                       if (_formKey.currentState!.validate()) {
-//                         http.Response response =
-//                         await authentication(id, password);
-//                         print("Status Code  " + response.statusCode.toString());
-//                         if (response.statusCode == 200) {
-//                           Map<String, dynamic> map = json.decode(response.body);
-//                           var accountType = map['user_type'];
-//                           var id = map["user_id"];
-//                           token = map["token"];
-//                           print(token);
-//                           print("Recieved accountType  " + accountType);
-//                           print(json.decode(response.body));
-//                           if (accountType != "Not Authorized") {
-//                             await _storage.write(
-//                                 key: "user_type", value: accountType);
-//                             await _storage.write(
-//                                 key: "user_id", value: id.toString());
-//                             if (accountType == "instructor") {
-//                               Navigator.push(
-//                                 context,
-//                                 MaterialPageRoute(
-//                                   builder: (context) => DoctorsCoursess(),
-//                                 ),
-//                               );
-//                             } else if (accountType == "staff") {
-//                               Navigator.push(
-//                                 context,
-//                                 MaterialPageRoute(
-//                                   builder: (context) => LibraryScan(),
-//                                 ),
-//                               );
-//                             } else if (accountType == "cashier") {
-//                               Navigator.push(
-//                                 context,
-//                                 MaterialPageRoute(
-//                                   builder: (context) => WalletScan(),
-//                                 ),
-//                               );
-//                             }else if (accountType == "merchant") {
-//                               Navigator.push(
-//                                 context,
-//                                 MaterialPageRoute(
-//                                   builder: (context) => merchant(),
-//                                 ),
-//                               );
-//                             } else if (accountType == "student") {
-//                               Navigator.push(
-//                                 context,
-//                                 MaterialPageRoute(
-//                                   builder: (context) => Gettransactions(),
-//                                 ),
-//                               );
-//                             }
-                            
-//                           } else if (response.statusCode == 200 &&
-//                               accountType == "Not Authorized") {
-//                             setState(() {
-//                               isLoading = false;
-//                             });
-//                             ScaffoldMessenger.of(context)
-//                                 .showSnackBar(snackBar);
-//                           }
-//                         } else if (response.statusCode == 400) {
-//                           setState(() {
-//                             isLoading = false;
-//                           });
-//                           ScaffoldMessenger.of(context).showSnackBar(
-//                             const SnackBar(
-//                                 content: Text('Invalid Credentials')),
-//                           );
-//                           print("Invalid Credentials");
-//                         } else if (response.statusCode == 408) {
-//                           setState(() {
-//                             isLoading = false;
-//                           });
-//                           ScaffoldMessenger.of(context).showSnackBar(
-//                             const SnackBar(content: Text('Request Timeout')),
-//                           );
-
-//                           print("Request Timeout");
-//                         } else if (response.statusCode == 500) {
-//                           setState(() {
-//                             isLoading = false;
-//                           });
-//                           ScaffoldMessenger.of(context).showSnackBar(
-//                             const SnackBar(
-//                                 content: Text('Internal Server Error')),
-//                           );
-
-//                           print("Internal Server Error");
-//                         } else {
-//                           setState(() {
-//                             isLoading = false;
-//                           });
-//                           ScaffoldMessenger.of(context).showSnackBar(
-//                             const SnackBar(content: Text('Generic Error')),
-//                           );
-//                           print("Generic Error");
-//                         }
-//                       }
-//                     },
-//                     child: Padding(
-//                       padding: const EdgeInsets.all(18),
-//                       child: Center(
-//                         child: isLoading
-//                             ? const CupertinoActivityIndicator(
-//                           color: Colors.white,
-//                         )
-//                             : const Text(
-//                           'Sign in',
-//                           style: TextStyle(
-//                             color: Colors.white,
-//                             fontSize: 20,
-//                             fontWeight: FontWeight.bold,
-//                           ),
-//                         ),
-//                       ),
-//                     ),
-//                   ),
-//                 ),
-//               ],
-//             ),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-
-@override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
@@ -323,6 +40,7 @@ class SigninState extends State<Signin> {
           padding: const EdgeInsets.all(20.0),
           child: SingleChildScrollView(
             child: Wrap(
+              // crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Center(
                   child: Image.asset('assets/images/AASTlogo.png'),
@@ -347,7 +65,7 @@ class SigninState extends State<Signin> {
                           padding: const EdgeInsets.all(8.0),
                           child: TextFormField(
                             autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
+                            AutovalidateMode.onUserInteraction,
                             onChanged: (val) {
                               setState(() {
                                 id = val;
@@ -359,10 +77,9 @@ class SigninState extends State<Signin> {
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
                               hintText: "Registration Number",
+                              // labelText: label,
                               contentPadding: const EdgeInsets.symmetric(
-                                vertical: 10.0,
-                                horizontal: 10.0,
-                              ),
+                                  vertical: 10.0, horizontal: 10.0),
                               icon: const Icon(
                                 Icons.numbers,
                                 color: Colors.grey,
@@ -376,6 +93,7 @@ class SigninState extends State<Signin> {
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
                                   color: Colors.grey,
+                                  // color: Colors.grey.withOpacity(0.5),
                                   width: 2,
                                 ),
                                 borderRadius: BorderRadius.circular(8),
@@ -391,7 +109,7 @@ class SigninState extends State<Signin> {
                           padding: const EdgeInsets.all(8.0),
                           child: TextFormField(
                             autovalidateMode:
-                                AutovalidateMode.onUserInteraction,
+                            AutovalidateMode.onUserInteraction,
                             onChanged: (val) {
                               setState(() {
                                 password = val;
@@ -404,6 +122,7 @@ class SigninState extends State<Signin> {
                             keyboardType: TextInputType.number,
                             decoration: InputDecoration(
                               hintText: "Password",
+
                               suffixIcon: IconButton(
                                 onPressed: () {
                                   setState(() {
@@ -414,10 +133,9 @@ class SigninState extends State<Signin> {
                                   (x) ? Icons.visibility_off : Icons.visibility,
                                 ),
                               ),
+                              // labelText: label,
                               contentPadding: const EdgeInsets.symmetric(
-                                vertical: 10.0,
-                                horizontal: 10.0,
-                              ),
+                                  vertical: 10.0, horizontal: 10.0),
                               icon: const Icon(
                                 Icons.lock_outlined,
                                 color: Colors.grey,
@@ -431,6 +149,7 @@ class SigninState extends State<Signin> {
                               focusedBorder: OutlineInputBorder(
                                 borderSide: const BorderSide(
                                   color: Colors.grey,
+                                  // color: Colors.grey.withOpacity(0.5),
                                   width: 2,
                                 ),
                                 borderRadius: BorderRadius.circular(8),
@@ -451,31 +170,38 @@ class SigninState extends State<Signin> {
                   child: ElevatedButton(
                     style: ButtonStyle(
                       backgroundColor:
-                          MaterialStateProperty.all<Color>(Color(0xFF1f3164)),
+                      const MaterialStatePropertyAll(Color(0xFF1f3164)),
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18.0),
                         ),
                       ),
+                      // backgroundColor: (c.enabled)
+                      //     ? const MaterialStatePropertyAll(Colors.blue)
+                      //     : MaterialStatePropertyAll(Colors.blue.shade300),
                     ),
+                    // onPressed: c.enabled ? c.signIn : null,
                     onPressed: () async {
                       setState(() {
                         isLoading = true;
                       });
                       if (_formKey.currentState!.validate()) {
-                        http.Response response = await authentication(id, password);
+                        http.Response response =
+                        await authentication(id, password);
                         print("Status Code  " + response.statusCode.toString());
                         if (response.statusCode == 200) {
                           Map<String, dynamic> map = json.decode(response.body);
                           var accountType = map['user_type'];
                           var id = map["user_id"];
-                          var token = map["token"];
+                          token = map["token"];
                           print(token);
-                          print("Received accountType  " + accountType);
+                          print("Recieved accountType  " + accountType);
                           print(json.decode(response.body));
                           if (accountType != "Not Authorized") {
-                            await _storage.write(key: "user_type", value: accountType);
-                            await _storage.write(key: "user_id", value: id.toString());
+                            await _storage.write(
+                                key: "user_type", value: accountType);
+                            await _storage.write(
+                                key: "user_id", value: id.toString());
                             if (accountType == "instructor") {
                               Navigator.push(
                                 context,
@@ -497,7 +223,7 @@ class SigninState extends State<Signin> {
                                   builder: (context) => WalletScan(),
                                 ),
                               );
-                            } else if (accountType == "merchant") {
+                            }else if (accountType == "merchant") {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -512,53 +238,21 @@ class SigninState extends State<Signin> {
                                 ),
                               );
                             }
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                final dialog = Dialog(
-                                  child: Container(
-                                    padding: const EdgeInsets.all(20),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        const Icon(
-                                          Icons.check_circle,
-                                          color: Colors.green,
-                                          size: 50,
-                                        ),
-                                        const SizedBox(height: 20),
-                                        const Text(
-                                          "Logged in Successfully!",
-                                          style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                );
-                                Future.delayed(const Duration(seconds: 1), () {
-                                  Navigator.pop(context);
-                                });
-                                return dialog;
-                              },
-                            ).then((_) {
-                              // Perform any action after dialog is closed
-                              // You can navigate to a new screen here
-                            });
-                          } else if (accountType == "Not Authorized") {
+                          } else if (response.statusCode == 200 &&
+                              accountType == "Not Authorized") {
                             setState(() {
                               isLoading = false;
                             });
-                            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(snackBar);
                           }
                         } else if (response.statusCode == 400) {
                           setState(() {
                             isLoading = false;
                           });
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Invalid Credentials')),
+                            const SnackBar(
+                                content: Text('Invalid Credentials')),
                           );
                           print("Invalid Credentials");
                         } else if (response.statusCode == 408) {
@@ -568,15 +262,17 @@ class SigninState extends State<Signin> {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(content: Text('Request Timeout')),
                           );
+
                           print("Request Timeout");
                         } else if (response.statusCode == 500) {
-                        
                           setState(() {
                             isLoading = false;
                           });
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Internal Server Error')),
+                            const SnackBar(
+                                content: Text('Internal Server Error')),
                           );
+
                           print("Internal Server Error");
                         } else {
                           setState(() {
@@ -594,16 +290,16 @@ class SigninState extends State<Signin> {
                       child: Center(
                         child: isLoading
                             ? const CupertinoActivityIndicator(
-                                color: Colors.white,
-                              )
+                          color: Colors.white,
+                        )
                             : const Text(
-                                'Sign in',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
+                          'Sign in',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
                     ),
                   ),
