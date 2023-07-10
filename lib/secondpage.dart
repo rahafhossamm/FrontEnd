@@ -248,6 +248,16 @@ class secondpagestate extends State<secondpage>
               IconButton(
                 onPressed: () async {
                   await ReturningAPI(borrowedList[index][0], borrowedList[index][1], borrowedList[index][2]);
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Row(
+                          children: [
+
+                            Text(message),
+                          ],
+                        ),
+                      )
+                  );
                 },
                 icon: Icon(Icons.remove_circle, color: Colors.red),
               ),

@@ -87,6 +87,12 @@ class Gettransactionsstate extends State<Gettransactions> {
         itemCount: length,
         separatorBuilder: (BuildContext context, int index) => Divider(),
         itemBuilder: (context, index) {
+          Color? containerColor;
+          if (transactionlist[index][2] == 0) {
+            containerColor = Colors.green[200];
+          } else {
+            containerColor = Colors.red[200];
+          }
           return Row(
             children: [
               Padding(
@@ -101,7 +107,7 @@ class Gettransactionsstate extends State<Gettransactions> {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20.0),
                   child: Container(
-                    color: Colors.grey[200],
+                    color: containerColor,
                     padding: EdgeInsets.all(16),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,

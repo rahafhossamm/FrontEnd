@@ -20,7 +20,7 @@ class WalletAddState extends State<WalletAdd> {
   Map mapresponse2 = {};
   Map dataresponse = {};
   var points;
-  int merchantid=12024; //to be changed 
+  int merchantid=int.parse(id); //to be changed 
 
   Future<void> getPointsAmount(int studentId) async {
     var apiUrl =
@@ -69,8 +69,8 @@ class WalletAddState extends State<WalletAdd> {
     var headers = {'accept': '*/*', 'Content-Type': 'application/json','Authorization': 'Bearer ${token}'};
     var body = jsonEncode({
       "transaction_id": 0,
-      "student_id": id,
-      "merchant_id": merchantid,
+      "student_id": sid,
+      "merchant_id": 0,
       "transaction_date": "2023-06-28T05:44:50.771Z",
       "transaction_amount": amount
     }
